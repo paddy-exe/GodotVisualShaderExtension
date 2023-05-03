@@ -7,14 +7,10 @@
 #include <windows.h>
 #endif
 
-#include <godot_cpp/classes/visual_shader_node_custom.hpp>
-#include <godot_cpp/variant/string.hpp>
-#include <godot_cpp/variant/typed_array.hpp>
-#include <godot_cpp/classes/visual_shader.hpp>
-#include <godot_cpp/classes/shader.hpp>
-#include <godot_cpp/classes/ref.hpp>
+#include <godot_cpp/core/binder_common.hpp>
+#include <godot_cpp/classes/global_constants.hpp>
 
-#include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/classes/visual_shader_node_custom.hpp>
 
 using namespace godot;
 
@@ -29,20 +25,21 @@ public:
     ExampleShaderNode();
     ~ExampleShaderNode();
 
-    virtual String _get_caption() const;
-    virtual String _get_description() const;
-    virtual String _get_category() const;
-    virtual VisualShaderNode::PortType _get_return_icon_type() const;
+public:
+    virtual String _get_name() const override;
+    virtual String _get_description() const override;
+    virtual String _get_category() const override;
+    virtual VisualShaderNode::PortType _get_return_icon_type() const override;
 
-	virtual int32_t _get_input_port_count() const;
-	virtual PortType _get_input_port_type(int32_t p_port) const;
-	virtual String _get_input_port_name(int32_t p_port) const;
+	virtual int64_t _get_input_port_count() const override;
+	virtual PortType _get_input_port_type(int64_t p_port) const override;
+	virtual String _get_input_port_name(int64_t p_port) const override;
 
-	virtual int32_t _get_output_port_count() const;
-	virtual PortType _get_output_port_type(int32_t p_port) const;
-	virtual String _get_output_port_name(int32_t p_port) const;
+	virtual int64_t _get_output_port_count() const override;
+	virtual PortType _get_output_port_type(int64_t p_port) const override;
+	virtual String _get_output_port_name(int64_t p_port) const override;
 
-	virtual String _get_code(Shader::Mode p_mode, VisualShader::Type p_type, int32_t p_id, const String *p_input_vars, const String *p_output_vars, bool p_for_preview = false) const;
+	virtual String _get_code(Shader::Mode p_mode, VisualShader::Type p_type, int64_t p_id, const String *p_input_vars, const String *p_output_vars, bool p_for_preview = false) const override;
 };
 
 #endif // VS_EXTENSION_CLASS_H
